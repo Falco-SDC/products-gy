@@ -19,7 +19,7 @@ CREATE TABLE product
 );
 
 COPY product (id, name, slogan, description, category, default_price)
-FROM '/Users/gabeyamartino/Desktop/product.csv'
+FROM '/Users/gabeyamartino/Desktop/SDC_data/product.csv'
 DELIMITER ',' CSV HEADER;
 
 ---------------
@@ -44,7 +44,7 @@ ALTER TABLE features ADD FOREIGN KEY (product_id) REFERENCES product (id);
 CREATE INDEX feat_index ON features (product_id);
 
 COPY features
-FROM '/Users/gabeyamartino/Desktop/features.csv'
+FROM '/Users/gabeyamartino/Desktop/SDC_data/features.csv'
 DELIMITER ','
 CSV HEADER;
 
@@ -72,7 +72,7 @@ CREATE INDEX rel_index ON related (current_product_id);
 
 
 COPY related
-FROM '/Users/gabeyamartino/Desktop/related.csv'
+FROM '/Users/gabeyamartino/Desktop/SDC_data/related.csv'
 DELIMITER ','
 CSV HEADER;
 
@@ -103,7 +103,7 @@ ALTER TABLE styles ADD FOREIGN KEY (product_id) REFERENCES product (id);
 CREATE INDEX style_index ON styles (product_id);
 
 COPY styles
-FROM '/Users/gabeyamartino/Desktop/styles.csv'
+FROM '/Users/gabeyamartino/Desktop/SDC_data/styles.csv'
 (format csv, null "null",
 DELIMITER ',',
 HEADER);
@@ -133,7 +133,7 @@ ALTER TABLE skus ADD FOREIGN KEY (style_id) REFERENCES styles (style_id);
 CREATE INDEX skus_index ON skus (style_id);
 
 COPY skus
-FROM '/Users/gabeyamartino/Desktop/skus.csv'
+FROM '/Users/gabeyamartino/Desktop/SDC_data/skus.csv'
 DELIMITER ','
 CSV HEADER;
 
@@ -162,7 +162,7 @@ ALTER TABLE photos ADD FOREIGN KEY (style_id) REFERENCES styles (style_id);
 CREATE INDEX photos_index ON photos (style_id);
 
 COPY photos
-FROM '/Users/gabeyamartino/Desktop/photos.csv'
+FROM '/Users/gabeyamartino/Desktop/SDC_data/photos.csv'
 
 DELIMITER ','
 QUOTE E'\b'
